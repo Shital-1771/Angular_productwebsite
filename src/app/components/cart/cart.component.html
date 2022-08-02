@@ -1,0 +1,22 @@
+<h2 style="text-align: center; font-family: Arial, Helvetica, sans-serif; font-weight: bold; margin-top: 30px;">Cart</h2>
+<div class="container">
+  <table class="table" style="text-align: center ; margin-top: 100px; border-spacing: 30px; border-collapse: separate;">
+    <tr>
+      <th>Serial Number</th>
+      <th>Image</th>
+      <th>Product Name</th>
+      <th>Price</th>
+    </tr>
+    <tr *ngFor="let item of items;index as i">
+      <td>{{i}}</td>
+      <td><img src={{item.imageurl}} alt="" style="width: 150px; height: 100px;"></td>
+      <td>{{item.name}}</td>
+      <td>{{item.unitprice}}</td>
+    </tr>
+    <tr>
+      <td colspan="2"><a class = "btn btn-primary" style="width: 60%; margin-left: 10%;color: white;background-color: blue;">Checkout</a></td>
+      <td colspan="2"><a class = "btn" (click)="clearCart()" style="width: 60%; margin-left: 10%; color: white;background-color: red;">Clear</a></td>
+    </tr>
+  </table>
+
+</div>

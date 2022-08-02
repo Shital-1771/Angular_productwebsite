@@ -1,0 +1,16 @@
+<div class="container" style="margin-top: 30px; ">
+  <h2 style="text-align: center; margin-bottom: 30px;">Category List</h2>
+  <table class = "table table-bordered table-striped">
+    <tr>
+      <th>Category ID</th>
+      <th>Category Name</th>
+    </tr>
+    <tr *ngFor = "let temp of category">
+      <td>{{temp.categoryid}}</td>
+      <td>{{temp.categoryname}}</td>
+    </tr>
+  </table>
+</div>
+
+
+

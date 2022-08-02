@@ -1,0 +1,103 @@
+    <!-- <tr *ngFor = "let temp of products">
+      <td>{{temp.id}}</td>
+      <td>{{temp.sku}}</td>
+      <td>{{temp.name}}</td>
+      <td>{{temp.description}}</td>
+      <td>{{temp.unitprice}}</td>
+      <td><img src="{{temp.imageurl}}" style="height: 100px; width: 100px;"></td>
+      <td>{{temp.active}}</td>
+      <td>{{temp.unitinstock}}</td>
+      <td>{{temp.datecreated}}</td>
+      <td>{{temp.lastupdated}}</td>
+      <td>{{temp.categoryid}}</td> -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="color : white;">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"  style="margin-right: 15px;"><button class = "btn btn-outline-light" (click) = "gotoHome()" style="height: 60px;">Home</button></li>
+        <li class="nav-item"  style="margin-right: 15px;"><button class = "btn btn-outline-light" (click) = "addProduct()">Add Product</button></li>
+        <!-- <li class="nav-item" style="float: right; margin-left: 100%;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9Ct-LHrPJ8cCDDXzHpZPc3NxQsQO0wHEb7Q&usqp=CAU" alt=""></li> -->
+        <!-- <li><img class="pull-right" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9Ct-LHrPJ8cCDDXzHpZPc3NxQsQO0wHEb7Q&usqp=CAU" width="10%" id="eye" ></li> -->
+        <li class="nav-item d-flex"><a routerLink="/cart" data-bs-toggle="modal" data-bs-target = "#shoppingcart"><img class="pull-right" style="float: right; margin-left: 1200px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9Ct-LHrPJ8cCDDXzHpZPc3NxQsQO0wHEb7Q&usqp=CAU" width="4%" height="auto" id="eye" ></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container" style="text-align: center;"><p style="font-weight: bold; font-size: 40px; margin-top: 20px;">Products</p></div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4" style="margin : 50px">
+  <div class="col" *ngFor = "let temp of products; index as i">
+    <div class="card h-100">
+        <img src={{temp.imageurl}} class="card-img-top" alt="..." style="height: 150px; width: 150px;">
+        <a href = "#" class="nav-link" data-bs-toggle = "modal" [attr.data-bs-target]= "'#test' + i">
+        <div class="card-body">
+          <h5 class="card-title">{{temp.name}}</h5>
+          <p class="card-text">{{temp.description}}</p>
+        </div>
+        </a>
+        <div class="card-footer">
+          <a class = "btn btn-primary" style="float: right;" data-bs-toggle="modal" [attr.data-bs-target]= "'#test' + i">View Details</a>
+        </div>
+    </div>
+
+    <!-- Product Description -->
+    <div class="modal fade" id = test{{i}}>
+      <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <h2 style="text-align: center; font-size: 30px; font-weight: bold;">{{temp.name}}</h2>
+                <table style="border-spacing: 20px; border-collapse: separate;margin-left: 30px;">
+                  <tr>
+                    <td colspan="2">
+                      <img src={{temp.imageurl}} alt="" style="width: 80%; height: auto; margin : 15px 45px">
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Product ID</th>
+                    <td>{{temp.id}}</td>
+                  </tr>
+                  <tr>
+                    <th>SKU</th>
+                    <td>{{temp.sku}}</td>
+                  </tr>
+                  <tr>
+                    <th>Product Name</th>
+                    <td>{{temp.name}}</td>
+                  </tr>
+                  <tr>
+                    <th>Description</th>
+                    <td>{{temp.description}}</td>
+                  </tr>
+                  <tr>
+                    <th>Price</th>
+                    <td>{{temp.unitprice | currency:'INR'}}</td>
+                  </tr>
+                  <tr>
+                    <th>Stock</th>
+                    <td>{{temp.unitinstock}} peices Available</td>
+                  </tr>
+                  <tr>
+                    <th>Date Created</th>
+                    <td>{{temp.datecreated}}</td>
+                  </tr>
+                 
+                  <tr>
+                    <td colspan="2">Last Updated on {{temp.datecreated}}</td>
+                  </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+              <div> <a class = "btn btn-primary text-end" (click)= "addToCart(temp)">Add to Cart</a></div>
+              <ng-template #elseBlock><a class = "btn btn-danger text-end" aria-disabled="true">Out of Stock</a></ng-template>
+            </div>
+          </div>
+      </div>
+    </div>
+    <!-- //Product Description -->
+  </div>
+</div>
